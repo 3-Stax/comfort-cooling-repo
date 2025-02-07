@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Comfort Cooling cc</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <style>
+    body {
+      position: relative;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/logo.png');
+      background-repeat: repeat;
+      background-attachment: fixed;
+      background-size: auto;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.2rem;
+      margin: 0 15px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #a8d0e6;
+      transform: scale(1.1);
+    }
+
+    .carousel {
+      position: relative;
+      width: 80%;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      flex: 0 0 100%;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .carousel-button.prev {
+      left: 10px;
+    }
+
+    .carousel-button.next {
+      right: 10px;
+    }
+
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3, h4 {
+      color: #1e3c72;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    ul li, ol li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #2a5298;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .wrapper {
+      display: inline-flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    .wrapper .icon {
+      position: relative;
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 10px;
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrapper .tooltip {
+      position: absolute;
+      top: 0;
+      font-size: 14px;
+      background: #ffffff;
+      color: #ffffff;
+      padding: 5px 8px;
+      border-radius: 5px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrapper .tooltip::before {
+      position: absolute;
+      content: "";
+      height: 8px;
+      width: 8px;
+      background: #ffffff;
+      bottom: -3px;
+      left: 50%;
+      transform: translate(-50%) rotate(45deg);
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrapper .icon:hover .tooltip {
+      top: -45px;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .wrapper .icon:hover span,
+    .wrapper .icon:hover .tooltip {
+      text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper .facebook:hover,
+    .wrapper .facebook:hover .tooltip,
+    .wrapper .facebook:hover .tooltip::before {
+      background: #1877F2;
+      color: #ffffff;
+    }
+
+    .wrapper .tiktok:hover,
+    .wrapper .tiktok:hover .tooltip,
+    .wrapper .tiktok:hover .tooltip::before {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .wrapper .instagram:hover,
+    .wrapper .instagram:hover .tooltip,
+    .wrapper .instagram:hover .tooltip::before {
+      background: #7a21b6;
+      color: #ffffff;
+    }
+
+    .wrapper .youtube:hover,
+    .wrapper .youtube:hover .tooltip,
+    .wrapper .youtube:hover .tooltip::before {
+      background: #CD201F;
+      color: #ffffff;
+    }
+
+    .halo {
+      position: relative;
+      color: #000;
+      text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 40px #fff,
+        0 0 50px #fff,
+        0 0 60px #fff;
+    }
+
+    .icon a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.icon a:hover {
+  transform: scale(1.1);
+}
+
+.wrapper {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  gap: 15px; /* Space between icons */
+}
+
+.icon a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: #1e3c72; /* Default icon color */
+  text-decoration: none;
+}
+
+.icon a:hover {
+  transform: scale(1.1);
+}
+
+/* Specific colors for each icon */
+.icon.instagram a:hover {
+  background-color: #7a21b6;
+  color: #ffffff;
+}
+
+.icon.twitter a:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.icon.whatsapp a:hover {
+  background-color: #25D366;
+  color: #ffffff;
+}
+
+.icon.linkedin a:hover {
+  background-color: #0077B5;
+  color: #ffffff;
+}
+  </style>
+
+</head>
+<body>
+  <header>
+    <h1 class="halo">Comfort Cooling</h1>
+
+    <nav class="nav">
+      <a href="/aboutUs/">About Us</a> | 
+      <a href="services.html">Services</a> |
+      <a href="projects.html">Projects</a>
+      <a href="contactUs.html">Contact Us</a>
+
+    </nav>
+  </header>
+
+  <section class="carousel">
+    <div class="carousel-track">
+      <img src="images/istockphoto-1904637815-1024x1024.jpg" alt="Air conditioning unit" class="carousel-image">
+      <img src="images/istockphoto-157582287-1024x1024.jpg" alt="Refrigeration system" class="carousel-image">
+      <img src="images/istockphoto-1299901821-1024x1024.jpg" alt="HVAC installation" class="carousel-image">
+      <img src="images/istockphoto-1779596179-1024x1024.jpg" alt="Industrial cooling" class="carousel-image">
+      <img src="images/istockphoto-1368514998-1024x1024.jpg" alt="Commercial refrigeration" class="carousel-image">
+    </div>
+    <button class="carousel-button prev" aria-label="Previous Slide">←</button>
+    <button class="carousel-button next" aria-label="Next Slide">→</button>
+  </section>
+
+  <section id="aboutUs">
+    <h2>About Us</h2>
+    <p>Established in 2015, Comfort Cooling, Air-conditioning & Refrigeration Supplies, installs, services, and repairs heating, ventilation, and air-conditioning systems. We focus on international-quality air-conditioning and refrigeration units for industrial, commercial, and domestic use.</p>
+    <h3>Our Vision</h3>
+    <p>To be the leading distributor and repairer of heating, ventilation, air-conditioning, refrigeration systems, and allied products in Namibia.</p>
+    <h3>Our Values</h3>
+    <p>To conduct our business with honesty and integrity by developing and sustaining mutually beneficial relationships with our clients and suppliers, while providing the best customer service.</p>
+    <h3>Our Mission</h3>
+    <p>To distribute, install, and service quality air conditioning units for industrial and household use.</p>
+  </section>
+
+  <section id="coreValues">
+    <h2>Core Values</h2>
+    <ul>
+      <li><h3>Superior Service</h3> We place customers at the center of our attributes, and our quest to satisfy their needs drives everything we do.</li>
+      <li><h3>Team Work</h3> Our biggest and most important resource is our people, and we combine the diversity of our skills to achieve success.</li>
+      <li><h3>Reliability</h3> Our commitment to service is rooted in our belief in the <a href="https://www.iso.org/standards/popular/iso-9000-family">ISO 9000</a> family quality standards, which we use to ensure continuous improvement of both our customer services and product offerings.</li>
+      <li><h3>Innovation</h3> We continuously seek new ways to add value to our stakeholders, business, their customers, employees, or suppliers. We believe in a win-win relationship.</li>
+      <li><h3>Professionalism</h3> We live by a results-oriented culture, ethics, fairness, and honesty. These are the hallmarks of our business relationships.</li>
+      <li><h3>Excellence</h3> We are determined to keep walking the road of <a href="https://www.iso.org/standards/popular/iso-9000-family">ISO 9000</a> quality standards, continually improving our customer service, product offerings, and performance.</li>
+    </ul>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <p>We supply, install, service, and repair products such as air conditioners, chillers, cold rooms, freezers, and retail plant rooms.</p>
+    <h4>Air Conditioning Services Include:</h4>
+    <ul>
+      <li>Cleaning of indoor units as well as filters.</li>
+      <li>Checking and cleaning the outdoor unit and coil.</li>
+      <li>Checking gas pressure and refilling as needed.</li>
+      <li>Ensuring that the units perform both heating and cooling functions.</li>
+    </ul>
+  </section>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <ol>
+      <li>Air Conditioning System
+        <ul>
+          <li>Ceiling cassette</li>
+          <li>High wall splits</li>
+          <li>Floor standing</li>
+          <li>Horizontal ducted / hideaway</li>
+          <li>Under ceiling / window type</li>
+        </ul>
+      </li>
+      <li>Air Conditioning Spares
+        <ul>
+          <li>Blowers</li>
+          <li>Compressors</li>
+          <li>Condensing unit</li>
+          <li>Copper pipes</li>
+        </ul>
+      </li>
+      <li>Refrigeration Equipment
+        <ul>
+          <li>Gas Refills</li>
+          <li>Ventilation systems</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section id="team">
+    <h2>Our Team</h2>
+    <p>Our board comprises two non-executive members and two executive members who provide overall oversight of the company. Our board is led by an executive chairman. Our technical and management team consists of qualified, trained, and experienced workers who are available for consultancy, site surveys, installation, repairs, and maintenance.</p>
+    <ul>
+      <li><h4>Ray-Zeno Ambrosini</h4> <p>N3 - Electrical Engineering, Air Conditioning & Refrigeration</p></li>
+    </ul>
+  </section>
+ 
+  <section class="container pt-5 animate-fade">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7">
+        <h2 class="font-40">Our Brands</h2>
+        <p class="font-20 mb-0">As our preferred Air Conditioning and Refrigeration specialist, Comfort Cooling will be there for all your sales, service and repair needs. <a href="brands.php">See all brands</a>.</p>
+      </div>
+    </div>
+    <div class="owl-carousel lg-arrow">
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Advantage Air</h3>
+          <figure class="dim-1-1">
+            <a href="https://www.advantageair.com.au/?srsltid=AfmBOorDrTcVe5kXesW5VZc6tk0JkjFR5yaBOfbvS2QNsASBNF3MQqQt" title="Advantage Air" style="background-image: url(/aa-logo.jpg);">
+              <img src="/aa-logo.jpg" alt="Advantage Air">
+            </a>
+          </figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Air Movement Supplies</h3>
+          <figure class="dim-1-1"><a href="https://www.fans.co.za/" title="Air Movement Supplies" style="background-image: url(/ams_logo.jpg);"><img src="/ams_logo.jpg" alt="Air Movement Supplies"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Breezair</h3>
+          <figure class="dim-1-1"><a title="Breezair" style="background-image: url(brands/breezair.png);"><img src="brands/breezair.png" alt="Breezair"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Bry-Air</h3>
+          <figure class="dim-1-1"><a href="https://www.bryair.com/" title="Bry-Air" style="background-image: url(/bryair-logo.jpg);"><img src="/bryair-logo.jpg" alt="Bry-Air"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Carel</h3>
+          <figure class="dim-1-1"><a href="https://www.carel.com/" title="Carel" style="background-image: url(/carel.png);"><img src="/carel-logo.jpg" alt="Carel"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Daikin</h3>
+          <figure class="dim-1-1"><a href="https://www.daikin.com/" title="Daikin" style="background-image: url(/logo-daikin.png);"><img src="/logo-daikin.png" alt="Daikin"></a></figure>
+        </section>
+      </div>
+
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Danfoss</h3>
+          <figure class="dim-1-1"><a href="https://www.danfoss.com/en/" title="Danfoss" style="background-image: url(/logo-danfoss.svg);"><img src="/logo-danfoss.svg" alt="Danfoss"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Donkin Fans</h3>
+          <figure class="dim-1-1"><a title="Donkin Fans" style="background-image: url(brands/donkin_fans.png);"><img src="brands/donkin_fans.png" alt="Donkin Fans"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Freudenberg</h3>
+          <figure class="dim-1-1"><a href="https://www.freudenberg.com/" title="Freudenberg" style="background-image: url(/freudenberg-logo.png);"><img src="/freudenberg-logo.png" alt="Freudenberg"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Gree</h3>
+          <figure class="dim-1-1"><a href="https://global.gree.com/" title="Gree" style="background-image: url(/gree-logo.png);"><img src="/gree-logo.png" alt="Gree"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Liebert Hiross</h3>
+          <figure class="dim-1-1"><a title="Liebert Hiross" style="background-image: url(brands/liebert_hiross.png);"><img src="brands/liebert_hiross.png" alt="Liebert Hiross"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Midea</h3>
+          <figure class="dim-1-1"><a title="Midea" style="background-image: url(brands/midea.png);"><img src="brands/midea.png" alt="Midea"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Rickard</h3>
+          <figure class="dim-1-1"><a title="Rickard" style="background-image: url(brands/rickard.png);"><img src="brands/sample9.jpg" alt="Rickard"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Samsung</h3>
+          <figure class="dim-1-1"><a title="Samsung" style="background-image: url(brands/samsung.png);"><img src="brands/sample9.jpg" alt="Samsung"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Saley International</h3>
+          <figure class="dim-1-1"><a title="Saley International" style="background-image: url(brands/seeley_international.png);"><img src="brands/sample9.jpg" alt="Saley International"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Soler & Palau</h3>
+          <figure class="dim-1-1"><a title="Soler & Palau" style="background-image: url(brands/soler_and_palau.png);"><img src="brands/sample9.jpg" alt="Soler & Palau"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Systemair</h3>
+          <figure class="dim-1-1"><a title="Systemair" style="background-image: url(brands/systemair.png);"><img src="brands/sample9.jpg" alt="Systemair"></a></figure>
+        </section>
+      </div>
+      <div class="item">
+        <section>
+          <h3 class="sr-only">Vortice</h3>
+          <a href="https://www.vortice.com/en/" target="_blank">
+            <figure class="dim-1-1">
+              <img src="/logo-vortice.jpg" alt="Vortice">
+            </figure>
+          </a>
+        </section>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <ul class="wrapper">
+      <li class="icon facebook">
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+          <span><i class="fab fa-facebook-f"></i></span>
+        </a>
+      </li>
+
+      <li class="icon youtube">
+        <a href="https://www.youtube.com/" target="_blank">
+          <span><i class="fab fa-youtube"></i></span>
+        </a>
+      </li>
+      
+      <li class="icon tiktok">
+        <a href="https://www.tiktok.com/" target="_blank">
+          <span><i class="fab fa-tiktok"></i></span>
+        </a>
+      </li>
+      
+      <li class="icon instagram">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <span><i class="fab fa-instagram"></i></span>
+    </a>
+  </li>
+  <li class="icon twitter">
+    <a href="https://www.twitter.com/" target="_blank" aria-label="Twitter">
+      <span><i class="fab fa-x-twitter"></i></span>
+    </a>
+  </li>
+  <li class="icon whatsapp">
+    <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp">
+      <span><i class="fab fa-whatsapp"></i></span>
+    </a>
+  </li>
+  <li class="icon linkedin">
+    <a href="https://www.linkedin.com/in/your-profile/" target="_blank" aria-label="LinkedIn">
+      <span><i class="fab fa-linkedin"></i></span>
+    </a>
+  </li>
+    </ul>
+    <p>© Comfort Cooling cc Cooling 2025. All Rights Reserved</p>
+  </footer>
+  <script>
+    // Carousel functionality
+    const carouselTrack = document.querySelector('.carousel-track');
+    const carouselImages = document.querySelectorAll('.carousel-image');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const nextButton = document.querySelector('.carousel-button.next');
+    let currentIndex = 0;
+  
+    // Function to move to a specific slide
+    function moveToSlide(index) {
+      if (index < 0) {
+        index = carouselImages.length - 1;
+      } else if (index >= carouselImages.length) {
+        index = 0;
+      }
+      const offset = -index * 100;
+      carouselTrack.style.transform = `translateX(${offset}%)`;
+      currentIndex = index;
+    }
+  
+    // Event listeners for buttons
+    prevButton.addEventListener('click', () => {
+      moveToSlide(currentIndex - 1);
+    });
+  
+    nextButton.addEventListener('click', () => {
+      moveToSlide(currentIndex + 1);
+    });
+  
+    // Optional: Auto-play the carousel
+    let autoPlayInterval;
+  
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        moveToSlide(currentIndex + 1);
+      }, 3000); // Change slide every 3 seconds
+    }
+  
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+  
+    // Start auto-play when the page loads
+    startAutoPlay();
+  
+    // Pause auto-play when hovering over the carousel
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    document.addEventListener('DOMContentLoaded', function () {
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+      0: { items: 1 },
+      600: { items: 3 },
+      1000: { items: 5 }
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const carouselTrack = document.querySelector('.carousel-track');
+  const carouselImages = document.querySelectorAll('.carousel-image');
+  const prevButton = document.querySelector('.carousel-button.prev');
+  const nextButton = document.querySelector('.carousel-button.next');
+
+  if (carouselTrack && carouselImages.length > 0 && prevButton && nextButton) {
+    let currentIndex = 0;
+
+    function moveToSlide(index) {
+      if (index < 0) {
+        index = carouselImages.length - 1;
+      } else if (index >= carouselImages.length) {
+        index = 0;
+      }
+      const offset = -index * 100;
+      carouselTrack.style.transform = `translateX(${offset}%)`;
+      currentIndex = index;
+    }
+
+    prevButton.addEventListener('click', () => {
+      moveToSlide(currentIndex - 1);
+    });
+
+    nextButton.addEventListener('click', () => {
+      moveToSlide(currentIndex + 1);
+    });
+
+    // Auto-play functionality
+    let autoPlayInterval;
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        moveToSlide(currentIndex + 1);
+      }, 3000); // Change slide every 3 seconds
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    startAutoPlay();
+
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+  }
+});
+  </script>
+  </body>
+  </html>
+  
