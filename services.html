@@ -6,10 +6,8 @@
   <title>Comfort Cooling cc</title>
   <link rel="stylesheet" href="services.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  
 </head>
 <body>
-  
   <div id="discountModal" class="modal">
     <div class="modal-content">
       <span class="close" aria-label="Close modal">&times;</span>
@@ -25,21 +23,26 @@
   </div>
 
   <header>
+    <div class="logo">
+      <a href="index.html" title="Home">
+        <img src="images/logo/logo_c.jpg" alt="Company Logo">
+      </a>
+    </div>
     <h1 class="halo">Services</h1>
-    <nav class="nav">
-      <a href="index.html">Home</a> |
-      <a href="services.html">Services</a> |
-      <a href="projects.html">Projects</a> |
-      <a href="contactUs.html">Contact Us</a>
+    <nav class="nav" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+      </ul>
     </nav>
   </header>
-
+  
   <section id="services">
     <h2>Our Services</h2>
     <p>Our Services include but are not limited to:</p>
-    
-    <p>We supply, install, service, and repair products such as air conditioners, chillers, cold rooms, freezers, 
-      and retail plant rooms.</p>
+    <p>We supply, install, service, and repair products such as air conditioners, chillers, cold rooms, freezers, and retail plant rooms.</p>
     <h4>Air Conditioning Services Include:</h4>
     <ul>
       <li>Cleaning of indoor units as well as filters.</li>
@@ -77,6 +80,7 @@
       </li>
     </ol>
   </section>
+
   <script src="services.js"></script>
 </body>
 </html>

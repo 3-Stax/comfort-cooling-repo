@@ -1,177 +1,208 @@
 body {
-    position: relative;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    padding-top: 80px;
-  }
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  padding-top: 50px;
+}
 
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/logo.png');
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-size: auto;
-    opacity: 0.3; 
-    z-index: -1; 
-  }
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/logo/logo_c.jpg');
+  background-repeat: repeat;
+  background-size: auto;
+  opacity: 0.3;
+  z-index: -1;
+}
 
-  header {
-    text-align: center;
-    padding: 10px; 
-    background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeInDown 1s ease-out;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    z-index: 1000;
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .nav a {
-    text-decoration: none;
+header {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Space out logo, heading, and nav */
+  padding: 5px 10px; /* Reduced padding */
+  background: linear-gradient(to right, #1e3c72, #2a5298);
   color: white;
-  font-size: 1rem; 
-  margin: 0 10px; 
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 1s ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 50px;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  margin: 0 10px;
   transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header h1 {
+  font-size: 1rem; /* Reduced font size */
+  margin: 0;
+  flex: 1; /* Allow the heading to take up remaining space */
+  text-align: center; /* Center the heading */
+}
+
+.logo img {
+  width: 60px; /* Reduced logo size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px; /* Reduced spacing between links */
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav a:hover {
+  color: #a8d0e6;
+  transform: scale(1.1);
+}
+
+section {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+section:first-of-type {
+  margin-top: 60px; /* Prevent overlap with header */
+}
+
+ul li, ol li {
+  margin-bottom: 10px;
+}
+
+.halo {
+  font-weight: bold;
+  color: #000;
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #fff, 
+    0 0 15px #fff, 
+    0 0 20px #fff;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: auto;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
   }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #ff0000;
+}
+
+h2 {
+  color: #1e3c72;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1e3c72;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2a5298;
+}
 
 
-  header h1 {
-    font-size: 1.5rem; 
-    margin: 0; 
-  }
-  .nav a:hover {
-    color: #a8d0e6; 
-    transform: scale(1.1);
-  }
 
-  section {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  ul li, ol li {
-    margin-bottom: 10px;
-  }
-
-  .halo {
-    font-weight: bold;
-    color: #000;
-    text-shadow: 
-      0 0 5px #fff, 
-      0 0 10px #fff, 
-      0 0 15px #fff, 
-      0 0 20px #fff;
-  }
-
-  .modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); 
-    overflow: auto;
-  }
-
-  .modal-content {
-    position: relative;
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: slideIn 0.5s ease-out;
-  }
-
-  @keyframes slideIn {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-
-  .close:hover {
-    color: #ff0000;
-  }
-
-  h2 {
-    color: #1e3c72;
-    margin-bottom: 10px;
-  }
-
-  p {
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #1e3c72;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover {
-    background-color: #2a5298;
-  }
